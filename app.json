@@ -1,28 +1,49 @@
 {
   "expo": {
-    "name": "cprg303project1",
-    "slug": "cprg303project1",
+    "name": "Quizzly",
+    "slug": "quizzly",
     "version": "1.0.0",
     "orientation": "portrait",
-    "icon": ".src/assets/icons/icon.png",
+    "icon": "./src/assets/icons/icon.png",
     "userInterfaceStyle": "light",
     "newArchEnabled": true,
     "splash": {
-      "image": ".src/assets/icons/splash-icon.png",
+      "image": "./src/assets/icons/splash-icon.png",
       "resizeMode": "contain",
       "backgroundColor": "#ffffff"
     },
-    "ios": {
-      "supportsTablet": true
-    },
+    // "ios": {
+    //   "supportsTablet": true,
+    //   "googleServicesFile": "./GoogleService-Info.plist",
+    //   "bundleIdentifier": "com.alvesgf16.quizzly"
+    // },
     "android": {
       "adaptiveIcon": {
-        "foregroundImage": ".src/assets/icons/adaptive-icon.png",
+        "foregroundImage": "./src/assets/icons/adaptive-icon.png",
         "backgroundColor": "#ffffff"
-      }
+      },
+      "googleServicesFile": "./google-services.json",
+      "package": "com.alvesgf16.quizzly"
     },
     "web": {
-      "favicon": ".src/assets/icons/favicon.png"
+      "favicon": "./src/assets/icons/favicon.png"
+    },
+    "plugins": [
+      "@react-native-firebase/app",
+      "@react-native-firebase/auth"
+      // [
+      //   "expo-build-properties",
+      //   {
+      //     "ios": {
+      //       "useFrameworks": "static"
+      //     }
+      //   }
+      // ]
+    ],
+    "extra": {
+      "eas": {
+        "projectId": "00d07878-f318-49c4-b9e3-705dffa6c667"
+      }
     }
   }
 }
