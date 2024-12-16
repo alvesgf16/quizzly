@@ -78,11 +78,7 @@ function LeaderboardScreen({ navigation }) {
       <Text style={styles.rank}>{index + 1}</Text>
       <Image source={item.avatar} style={styles.avatar} />
       <Text style={styles.name}>{item.name}</Text>
-      <Text style={styles.points}>
-        {item.points}
-        {' '}
-        pts
-      </Text>
+      <Text style={styles.points}>{item.points} pts</Text>
     </View>
   );
 
@@ -98,8 +94,8 @@ function LeaderboardScreen({ navigation }) {
       />
       <Text style={styles.header}>Leaderboard</Text>
       <Text style={styles.subHeader}>
-        Keep playing to climb the leaderboard and beat your friends&apos; scores.
-        Stay on top for bragging rights!
+        Keep playing to climb the leaderboard and beat your friends&apos;
+        scores. Stay on top for bragging rights!
       </Text>
       <FlatList
         data={leaderboardData}
@@ -111,11 +107,7 @@ function LeaderboardScreen({ navigation }) {
         <Text style={styles.rank}>{user.rank}</Text>
         <Image source={user.avatar} style={styles.avatar} />
         <Text style={styles.name}>{user.name}</Text>
-        <Text style={styles.points}>
-          {user.points}
-          {' '}
-          pts
-        </Text>
+        <Text style={styles.points}>{user.points} pts</Text>
       </View>
     </View>
   );

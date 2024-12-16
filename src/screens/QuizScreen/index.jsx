@@ -150,8 +150,7 @@ function QuizScreen({ navigation }) {
       {/* Timer */}
       <Text style={styles.timer}>
         Time left:
-        {timer}
-        s
+        {timer}s
       </Text>
 
       {/* Options */}
@@ -163,13 +162,13 @@ function QuizScreen({ navigation }) {
               styles.optionButton,
               {
                 backgroundColor:
-                  answerFeedback === 'correct'
-                  && option === questions[questionIndex].correctAnswer
+                  answerFeedback === 'correct' &&
+                  option === questions[questionIndex].correctAnswer
                     ? 'green'
-                    : answerFeedback === 'incorrect'
-                      && option !== questions[questionIndex].correctAnswer
-                      ? 'red'
-                      : '#2266E8', // Default color for options
+                    : answerFeedback === 'incorrect' &&
+                      option !== questions[questionIndex].correctAnswer
+                    ? 'red'
+                    : '#2266E8', // Default color for options
               },
             ]}
             onPress={() => handleAnswer(option)}

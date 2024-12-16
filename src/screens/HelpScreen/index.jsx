@@ -53,8 +53,7 @@ function HelpScreen({ navigation }) {
           style={styles.icon}
         />
         <Text style={styles.cardText}>
-          Contact support if you face any issues:
-          {' '}
+          Contact support if you face any issues:{' '}
         </Text>
         <Text style={styles.supportEmail}>support@quizzly.com</Text>
       </View>

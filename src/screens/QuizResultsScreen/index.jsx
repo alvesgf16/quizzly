@@ -10,14 +10,7 @@ function QuizResultsScreen({ route, navigation }) {
     <View style={styles.container}>
       <Text style={styles.title}>Quiz Results</Text>
       <Text style={styles.resultText}>
-        You scored
-        {' '}
-        {score}
-        {' '}
-        out of
-        {' '}
-        {totalQuestions}
-        !
+        You scored {score} out of {totalQuestions}!
       </Text>
       <TouchableOpacity
         style={styles.button}

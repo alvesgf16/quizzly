@@ -4,8 +4,11 @@ import React, { useState } from 'react';
 import { View, Text, Switch, TouchableOpacity, Alert } from 'react-native';
 import { Ionicons } from '@expo/vector-icons';
 import styles from './styles';
+import { useUserAuth } from '../../contexts/UserContext';
 
 function SettingsScreen({ navigation }) {
+  const { signOut } = useUserAuth();
+
   const [notificationsEnabled, setNotificationsEnabled] = useState(false);
   const [darkModeEnabled, setDarkModeEnabled] = useState(false);
 
@@ -22,7 +25,8 @@ function SettingsScreen({ navigation }) {
           onValueChange={() => setNotificationsEnabled(!notificationsEnabled)}
           thumbColor={notificationsEnabled ? '#22E883' : '#E8E8E8'}
           trackColor={{
-            true: '#22E883', false: '#B0B0B0',
+            true: '#22E883',
+            false: '#B0B0B0',
           }}
         />
       </View>
@@ -34,7 +38,8 @@ function SettingsScreen({ navigation }) {
           onValueChange={() => setDarkModeEnabled(!darkModeEnabled)}
           thumbColor={darkModeEnabled ? '#2266E8' : '#E8E8E8'}
           trackColor={{
-            true: '#2266E8', false: '#B0B0B0',
+            true: '#2266E8',
+            false: '#B0B0B0',
           }}
         />
       </View>
@@ -59,7 +64,10 @@ function SettingsScreen({ navigation }) {
           name="log-out-outline"
           size={30}
           color="white"
-          onPress={() => navigation.navigate('SignInPage')}
+          onPress={() => {
+            signOut();
+            navigation.navigate('SignInPage');
+          }}
         />
       </View>
     </View>

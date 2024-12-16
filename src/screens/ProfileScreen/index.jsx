@@ -4,8 +4,11 @@ import { View, Text, Image, TouchableOpacity, ScrollView } from 'react-native';
 import { Ionicons } from '@expo/vector-icons';
 import styles from './styles';
 import avatar9 from '../../assets/images/avatar9.png';
+import { useUserAuth } from '../../contexts/UserContext';
 
 function ProfileScreen({ navigation }) {
+  const { signOut } = useUserAuth();
+
   return (
     <ScrollView contentContainerStyle={styles.container}>
       {/* Back Button */}
@@ -22,10 +25,7 @@ function ProfileScreen({ navigation }) {
 
       {/* Avatar and Name Section */}
       <View style={styles.profileHeader}>
-        <Image
-          source={avatar9}
-          style={styles.avatar}
-        />
+        <Image source={avatar9} style={styles.avatar} />
         <Text style={styles.userName}>User Name</Text>
         <Text style={styles.rank}>Rank: #9</Text>
       </View>
@@ -79,7 +79,10 @@ function ProfileScreen({ navigation }) {
         </TouchableOpacity>
         <TouchableOpacity
           style={styles.logoutButton}
-          onPress={() => navigation.navigate('SignInPage')} // Navigate to SignInPage
+          onPress={() => {
+            signOut();
+            navigation.navigate('SignInPage');
+          }} // Navigate to SignInPage
         >
           <Ionicons name="log-out-outline" size={18} color="white" />
           <Text style={styles.buttonText}>Log Out</Text>

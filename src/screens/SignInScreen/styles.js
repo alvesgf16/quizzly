@@ -33,7 +33,9 @@ const styles = StyleSheet.create({
     width: '100%',
     marginBottom: 15,
   },
-  eyeIcon: { padding: 10 },
+  eyeIcon: {
+    padding: 10,
+  },
   loginButton: {
     backgroundColor: '#3333FF',
     paddingVertical: 15,

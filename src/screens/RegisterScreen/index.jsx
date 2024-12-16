@@ -2,25 +2,42 @@ import PropTypes from 'prop-types';
 import React, { useState } from 'react';
 import { View, Text, TextInput, TouchableOpacity, Alert } from 'react-native';
 import styles from './styles';
+import { useUserAuth } from '../../contexts/UserContext';
 
 function RegisterScreen({ navigation }) {
+  const { emailAndPasswordSignUp } = useUserAuth();
+
   const [fullName, setFullName] = useState('');
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
   const [confirmPassword, setConfirmPassword] = useState('');
 
   const handleRegister = () => {
-    // Basic Validation
-    if (!fullName || !email || !password || !confirmPassword) {
-      Alert.alert('Error', 'All fields are required!');
-    } else if (password !== confirmPassword) {
-      Alert.alert('Error', 'Passwords do not match!');
-    } else if (!/^[A-Z0-9._%+-]+@[A-Z0-9.-]+\.[A-Z]{2,4}$/i.test(email)) {
-      Alert.alert('Error', 'Please enter a valid email!');
-    } else {
-      // Handle registration logic here (e.g., API call)
-      Alert.alert('Success', 'Registration successful!');
-      navigation.navigate('SignInPage'); // Navigate back to SignInPage
+    try {
+      // Basic Validation
+      if (!fullName || !email || !password || !confirmPassword) {
+        Alert.alert('Error', 'All fields are required!');
+      } else if (password !== confirmPassword) {
+        Alert.alert('Error', 'Passwords do not match!');
+      } else if (!/^[A-Z0-9._%+-]+@[A-Z0-9.-]+\.[A-Z]{2,4}$/i.test(email)) {
+        Alert.alert('Error', 'Please enter a valid email!');
+      } else {
+        // Handle registration logic here (e.g., API call)
+        emailAndPasswordSignUp(fullName, email, password);
+        navigation.navigate('SignInPage'); // Navigate back to SignInPage
+      }
+    } catch (error) {
+      switch (error.code) {
+        case 'auth/email-already-in-use':
+          Alert.alert('That email address is already in use!');
+          break;
+        case 'auth/invalid-email':
+          Alert.alert('That email address is invalid!');
+          break;
+        default:
+          Alert.alert(error);
+          break;
+      }
     }
   };
 
@@ -65,8 +82,7 @@ function RegisterScreen({ navigation }) {
       </TouchableOpacity>
 
       <Text style={styles.loginLink}>
-        Already have an account?
-        {' '}
+        Already have an account?{' '}
         <Text
           style={styles.registerLink}
           onPress={() => navigation.navigate('SignInPage')}
