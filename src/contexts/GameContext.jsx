@@ -91,6 +91,7 @@ export function GameContextProvider({ children }) {
 
   const value = useMemo(
     () => ({
+      correctAnswers,
       getQuestions,
       isTimerStopped,
       questionIndex,
@@ -104,6 +105,7 @@ export function GameContextProvider({ children }) {
       updateScore,
     }),
     [
+      correctAnswers,
       questionIndex,
       getQuestions,
       isTimerStopped,

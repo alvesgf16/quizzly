@@ -3,15 +3,16 @@ import React from 'react';
 import { Text, TouchableOpacity, View } from 'react-native';
 
 import styles from './styles';
+import { useGame } from '../../contexts/GameContext';
 
-function QuizResultsScreen({ route, navigation }) {
-  const { score, totalQuestions } = route.params;
+function QuizResultsScreen({ navigation }) {
+  const { correctAnswers, score } = useGame();
 
   return (
     <View style={styles.container}>
       <Text style={styles.title}>Quiz Results</Text>
       <Text style={styles.resultText}>
-        You scored {score} out of {totalQuestions}!
+        You got {correctAnswers} right and scored {score} points!
       </Text>
       <TouchableOpacity
         style={styles.button}
