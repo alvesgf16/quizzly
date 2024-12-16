@@ -1,6 +1,7 @@
 import PropTypes from 'prop-types';
 import React, { useState } from 'react';
-import { View, Text, TextInput, TouchableOpacity, Alert } from 'react-native';
+import { Alert, Text, TextInput, TouchableOpacity, View } from 'react-native';
+
 import styles from './styles';
 import { useUserAuth } from '../../contexts/UserContext';
 
@@ -12,7 +13,7 @@ function RegisterScreen({ navigation }) {
   const [password, setPassword] = useState('');
   const [confirmPassword, setConfirmPassword] = useState('');
 
-  const handleRegister = () => {
+  const handleRegister = async () => {
     try {
       // Basic Validation
       if (!fullName || !email || !password || !confirmPassword) {
@@ -23,7 +24,7 @@ function RegisterScreen({ navigation }) {
         Alert.alert('Error', 'Please enter a valid email!');
       } else {
         // Handle registration logic here (e.g., API call)
-        emailAndPasswordSignUp(fullName, email, password);
+        await emailAndPasswordSignUp(fullName, email, password);
         navigation.navigate('SignInPage'); // Navigate back to SignInPage
       }
     } catch (error) {

@@ -1,17 +1,18 @@
-import React from 'react';
 import { NavigationContainer } from '@react-navigation/native';
 import { createStackNavigator } from '@react-navigation/stack';
-import SignInScreen from './src/screens/SignInScreen';
-import RegisterScreen from './src/screens/RegisterScreen';
-import HomeScreen from './src/screens/HomeScreen';
+import React from 'react';
+
+import { UserContextProvider } from './src/contexts/UserContext';
+import CategorySelectionScreen from './src/screens/CategorySelectionScreen';
 import HelpScreen from './src/screens/HelpScreen';
+import HomeScreen from './src/screens/HomeScreen';
 import LeaderboardScreen from './src/screens/LeaderboardScreen';
 import ProfileScreen from './src/screens/ProfileScreen';
-import SettingsScreen from './src/screens/SettingsScreen';
-import QuizScreen from './src/screens/QuizScreen';
-import CategorySelectionScreen from './src/screens/CategorySelectionScreen';
 import QuizResultsScreen from './src/screens/QuizResultsScreen';
-import { UserContextProvider } from './src/contexts/UserContext';
+import QuizScreen from './src/screens/QuizScreen';
+import RegisterScreen from './src/screens/RegisterScreen';
+import SettingsScreen from './src/screens/SettingsScreen';
+import SignInScreen from './src/screens/SignInScreen';
 
 const Stack = createStackNavigator();
 

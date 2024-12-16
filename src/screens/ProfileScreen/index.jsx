@@ -1,7 +1,8 @@
+import { Ionicons } from '@expo/vector-icons';
 import PropTypes from 'prop-types';
 import React from 'react';
-import { View, Text, Image, TouchableOpacity, ScrollView } from 'react-native';
-import { Ionicons } from '@expo/vector-icons';
+import { Image, ScrollView, Text, TouchableOpacity, View } from 'react-native';
+
 import styles from './styles';
 import avatar9 from '../../assets/images/avatar9.png';
 import { useUserAuth } from '../../contexts/UserContext';

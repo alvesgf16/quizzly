@@ -1,6 +1,7 @@
 import PropTypes from 'prop-types';
-import React, { useState, useEffect } from 'react';
-import { View, Text, TouchableOpacity, Animated } from 'react-native';
+import React, { useEffect, useState } from 'react';
+import { Animated, Text, TouchableOpacity, View } from 'react-native';
+
 import styles from './styles';
 
 function QuizScreen({ navigation }) {

@@ -1,22 +1,35 @@
+import auth from '@react-native-firebase/auth';
 import PropTypes from 'prop-types';
-import React, { useState } from 'react';
-import { View, Text, TextInput, TouchableOpacity, Alert } from 'react-native';
+import React, { useEffect, useState } from 'react';
+import { Alert, Text, TextInput, TouchableOpacity, View } from 'react-native';
+
 import styles from './styles';
 import { useUserAuth } from '../../contexts/UserContext';
 
 function SignInScreen({ navigation }) {
   const { user, emailAndPasswordSignIn } = useUserAuth();
 
+  const [initializing, setInitializing] = useState(true);
   const [showPassword, setShowPassword] = useState(false);
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
 
+  useEffect(
+    () =>
+      auth().onAuthStateChanged(() => {
+        if (initializing) {
+          setInitializing(false);
+        }
+      }),
+    [initializing],
+  );
+
   if (!user) {
-    const handleLogin = () => {
+    const handleLogin = async () => {
       // Check if the user entered credentials (just basic validation here)
       try {
         if (email && password) {
-          emailAndPasswordSignIn(email, password);
+          await emailAndPasswordSignIn(email, password);
         } else {
           Alert.alert('Please enter both email and password');
         }
@@ -31,11 +44,11 @@ function SignInScreen({ navigation }) {
           case 'auth/user-not-found':
             Alert.alert('User account not found!');
             break;
-          case 'auth/wrong-password':
+          case 'auth/invalid-credential':
             Alert.alert('Incorrect password!');
             break;
           default:
-            Alert.alert(error);
+            Alert.alert(error.message);
             break;
         }
       }

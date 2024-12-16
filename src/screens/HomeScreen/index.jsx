@@ -1,7 +1,8 @@
+import { Ionicons } from '@expo/vector-icons';
 import PropTypes from 'prop-types';
 import React from 'react';
-import { View, Text, TouchableOpacity } from 'react-native';
-import { Ionicons } from '@expo/vector-icons';
+import { Text, TouchableOpacity, View } from 'react-native';
+
 import styles from './styles';
 import { useUserAuth } from '../../contexts/UserContext';
 

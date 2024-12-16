@@ -1,7 +1,8 @@
 import PropTypes from 'prop-types';
 import React from 'react';
-import { View, Text, FlatList, Image } from 'react-native';
+import { FlatList, Image, Text, View } from 'react-native';
 import { Ionicons } from 'react-native-vector-icons';
+
 import styles from './styles';
 import avatar1 from '../../assets/images/avatar1.png';
 import avatar2 from '../../assets/images/avatar2.png';

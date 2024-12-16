@@ -1,7 +1,8 @@
+import { Ionicons } from '@expo/vector-icons';
 import PropTypes from 'prop-types';
 import React from 'react';
-import { View, Text, TouchableOpacity, ScrollView, Alert } from 'react-native';
-import { Ionicons } from '@expo/vector-icons';
+import { Alert, ScrollView, Text, TouchableOpacity, View } from 'react-native';
+
 import styles from './styles';
 
 function HelpScreen({ navigation }) {

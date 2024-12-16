@@ -1,7 +1,8 @@
 // CategorySelectionPage.js
 import PropTypes from 'prop-types';
 import React from 'react';
-import { View, Text, TouchableOpacity } from 'react-native';
+import { Text, TouchableOpacity, View } from 'react-native';
+
 import styles from './styles';
 
 function CategorySelectionScreen({ navigation }) {
