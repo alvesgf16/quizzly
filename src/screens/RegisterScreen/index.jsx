@@ -8,8 +8,8 @@ import { useUserAuth } from '../../contexts/UserContext';
 function RegisterScreen({ navigation }) {
   const { emailAndPasswordSignUp } = useUserAuth();
 
-  const [fullName, setFullName] = useState('');
   const [email, setEmail] = useState('');
+  const [fullName, setFullName] = useState('');
   const [password, setPassword] = useState('');
   const [confirmPassword, setConfirmPassword] = useState('');
 

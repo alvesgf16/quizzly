@@ -7,12 +7,12 @@ import styles from './styles';
 import { useUserAuth } from '../../contexts/UserContext';
 
 function SignInScreen({ navigation }) {
-  const { user, emailAndPasswordSignIn } = useUserAuth();
+  const { emailAndPasswordSignIn, user } = useUserAuth();
 
-  const [initializing, setInitializing] = useState(true);
-  const [showPassword, setShowPassword] = useState(false);
   const [email, setEmail] = useState('');
+  const [initializing, setInitializing] = useState(true);
   const [password, setPassword] = useState('');
+  const [showPassword, setShowPassword] = useState(false);
 
   useEffect(
     () =>

@@ -12,11 +12,6 @@
       "resizeMode": "contain",
       "backgroundColor": "#ffffff"
     },
-    // "ios": {
-    //   "supportsTablet": true,
-    //   "googleServicesFile": "./GoogleService-Info.plist",
-    //   "bundleIdentifier": "com.alvesgf16.quizzly"
-    // },
     "android": {
       "adaptiveIcon": {
         "foregroundImage": "./src/assets/icons/adaptive-icon.png",
@@ -30,15 +25,14 @@
     },
     "plugins": [
       "@react-native-firebase/app",
-      "@react-native-firebase/auth"
-      // [
-      //   "expo-build-properties",
-      //   {
-      //     "ios": {
-      //       "useFrameworks": "static"
-      //     }
-      //   }
-      // ]
+      "@react-native-firebase/auth",
+      "expo-secure-store",
+      [
+        "expo-secure-store",
+        {
+          "configureAndroidBackup": true
+        }
+      ]
     ],
     "extra": {
       "eas": {

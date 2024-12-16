@@ -1,4 +1,5 @@
 import auth from '@react-native-firebase/auth';
+import { deleteItemAsync, setItem } from 'expo-secure-store';
 import PropTypes from 'prop-types';
 import React, {
   createContext,
@@ -35,12 +36,28 @@ export function UserContextProvider({ children }) {
     });
   }, []);
 
+  useEffect(() => {
+    if (user) {
+      fetch('https://opentdb.com/api_token.php?command=request')
+        .then((response) => response.json())
+        .then((response) => {
+          const { response_code: responseCode, token } = response;
+    
+          if (responseCode === 0) {
+            setItem('token', token);
+          }
+        });
+    } else {
+      deleteItemAsync('token');
+    }
+  }, [user]);
+
   const value = useMemo(
     () => ({
-      user,
-      emailAndPasswordSignUp,
       emailAndPasswordSignIn,
+      emailAndPasswordSignUp,
       signOut,
+      user,
     }),
     [user],
   );
